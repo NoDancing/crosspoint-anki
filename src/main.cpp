@@ -17,6 +17,9 @@
 
 #include "CrossPointSettings.h"
 #include "CrossPointState.h"
+#ifdef ANKI_ENABLED
+#include "AnkiSettingsStore.h"
+#endif
 #include "KOReaderCredentialStore.h"
 #include "MappedInputManager.h"
 #include "OpdsServerStore.h"
@@ -258,6 +261,9 @@ void setup() {
   SETTINGS.loadFromFile();
   I18N.loadSettings();
   KOREADER_STORE.loadFromFile();
+#ifdef ANKI_ENABLED
+  ANKI_STORE.loadFromFile();
+#endif
   OPDS_STORE.loadFromFile();
   UITheme::getInstance().reload();
   ButtonNavigator::setMappedInputManager(mappedInputManager);
